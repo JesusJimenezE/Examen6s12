@@ -1,0 +1,348 @@
+/* Tabla alumnos*/
+/*Esta tabla se creara con los campos solicitados por el cliente, siendo numericos como alfa numericos, como las caracteristicas de primari key, not null y unique*/
+CREATE TABLE alumTesoem( 
+IdAlum NUMBER(4) constraint pk_id_ds primary key,     
+Matr NUMBER(20)UNIQUE,   
+Nom NVARCHAR2(30) NOT NULL,    
+ApePate VARCHAR2(30),  
+ApeMate VARCHAR2(30),  
+Carr VARCHAR2(30),  
+Gru VARCHAR2(6),    
+Semes NUMBER(1),     
+Edi VARCHAR2(2),  
+Prome NUMBER(4)  
+);
+
+/* En este apartado creamos el proceso de almacenamiento*/
+create or replace procedure PA(
+M_Id IN NUMBER DEFAULT 0, 
+M_Matr IN NUMBER DEFAULT 0, 
+M_Nom IN VARCHAR2 DEFAULT 'Nom', 
+M_ApePate IN VARCHAR2 DEFAULT 'ApePate', 
+M_ApeMate IN VARCHAR2 DEFAULT 'ApeMate',
+M_Carr IN VARCHAR2 DEFAULT 'Carr ', 
+M_Gru IN VARCHAR2 DEFAULT '0000', 
+M_Semes IN NUMBER DEFAULT 1, 
+M_Edi IN VARCHAR2 DEFAULT '--', 
+M_Prome IN NUMBER DEFAULT 0)
+as 
+begin 
+insert into alumTesoem values (M_Id, M_Matr, M_Nom, M_ApePate, M_ApeMate, M_Carr, M_Gru, M_Semes, M_Edi, M_Prome);
+end;
+
+
+/* En este bloque ingresamos los datos para llenar la talbas*/
+EXECUTE PA (1, 206020008, 'Evelin Lizet', 'Cruz', 'Martínez', 'Sistemas computacionales', '6S12', 6, 'B', 91);
+
+
+/* En esta sentencia podemos ver nuestra tabla en este caso es alumTesoem*/
+SELECT * FROM alumTesoem;
+
+--------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de Sistemas computacionales*/
+CREATE TABLE ISC(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de ISC*/ 
+CREATE OR REPLACE PROCEDURE PISC
+AS
+BEGIN
+INSERT INTO ISC (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Sistemas computacionales';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PISC;
+SELECT  * FROM ISC;
+DELETE FROM ISC;
+
+-----------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de Gastronomia*/
+CREATE TABLE PGastro(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Gastronomia*/ 
+CREATE OR REPLACE PROCEDURE Gastro
+AS
+BEGIN
+INSERT INTO Gastro (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Gastronomia';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PGastro;
+SELECT * FROM Gastro;
+DELETE FROM Gastro;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de Automotris*/
+CREATE TABLE Auto(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Automotris*/ 
+CREATE OR REPLACE PROCEDURE PAuto
+AS
+BEING
+INSERT INTO Auto (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Automotris';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PAuto;
+SELECT * FROM Auto;
+DELETE FROM Auto;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de Industrial*/
+CREATE TABLE Indus(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Industrial*/ 
+CREATE OR REPLACE PROCEDURE PIndus
+AS
+BEGIN
+INSERT INTO Indus (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Industrial';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PIndus;
+SELECT * FROM Indus;
+delete FROM Indus;
+
+------------------------------------------------------------------------------------------------
+
+
+/*Ahora crearemos la tabla de Contador*/
+CREATE TABLE Conta(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Contador*/ 
+CREATE OR REPLACE PROCEDURE PConta
+AS
+BEGIN
+INSERT INTO Conta (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Contador';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PConta;
+SELECT * FROM Conta;
+DELETE FROM Conta;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de Energias renovables*/
+CREATE TABLE Ener(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Energias renovables*/ 
+CREATE OR REPLACE PROCEDURE PEner
+AS
+BEGIN
+INSERT INTO Ener (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Energias renovables';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PEner;
+SELECT * FROM Ener;
+DELETE FROM Ener;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de  Ambiental*/
+CREATE TABLE Ambi(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Ambiental*/ 
+CREATE OR REPLACE PROCEDURE PAmbi
+AS
+BEGIN
+INSERT INTO Ambi (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Ambiental';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PAmbi;
+SELECT * FROM Ambi;
+DELETE FROM Ambi;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de  TIC´S*/
+CREATE TABLE TICS(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de TIC´S*/ 
+CREATE OR REPLACE PROCEDURE PTICS
+AS
+BEGIN
+INSERT INTO TICS (Id, Matr, Nom, Apel, Gru, Edi);
+select Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'TIC´S';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PTICS;
+SELECT * FROM TICS;
+DELETE FROM TICS;
+
+------------------------------------------------------------------------------------------------
+
+/*Ahora crearemos la tabla de  Administracion*/
+CREATE TABLE Admin(
+Id NUMBER(20),
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Apel VARCHAR2 (30),
+Gru VARCHAR2 (30),
+Edi VARCHAR2 (30)
+);
+
+/*Tenemos que crear una funcion para poder visualizar solo los alumons de Administracion*/ 
+CREATE OR REPLACE PROCEDURE PAdmin
+AS
+BEGIN
+INSERT INTO Admin (Id, Matr, Nom, Apel, Gru, Edi);
+SELECT Id, Matr, Nom, ApePate | | ' ' | |  ApeMate, Gru, Edi FROM alumTesoem
+WHERE Carr = 'Administracion';
+END;
+
+/*Funcion para poder ver o borrar la tabla de la carrera*/
+EXECUTE PAdmin;
+SELECT * FROM Admin;
+DELETE FROM Admin;
+
+-----------------------------------------------------------------------------------------------------------
+
+/*Crearemos algunas tablas para las becas*/
+ 
+CREATE TABLE Cien(
+IdAlum NUMBER (30) UNIQUE,
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Carr VARCHAR2 (30),
+Semes NUMBER (30),
+CHECK (Semes<=9)
+Prome NUMBER (30)
+);
+
+CREATE OR REPLACE PROCEDURE PCien
+AS
+BEGIN
+INSERT INTO Cien (IdAlum, Matr, Nom, Carr, Semes, Prome);
+SELECT IdAlum, Matr, Nom ||' '|| ApePate||' '||  ApeMate, Carr, Semes, Prome FROM alumTesoem 
+WHERE Prome>=95;
+END;
+
+EXECUTE PCien;
+SELECT * FROM Cien;
+DELETE FROM Cien;
+
+------------------------------------------------------------------------------------------------
+
+CREATE TABLE Setenta(
+IdAlum NUMBER (30) UNIQUE,
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Carr VARCHAR2 (30),
+Semes NUMBER (30),
+CHECK (Semes<=9)
+Prome NUMBER (30)
+);
+
+CREATE OR REPLACE PROCEDURE PSET
+AS
+BEGIN
+INSERT INTO Cien (IdAlum, Matr, Nom, Carr, Semes, Prome);
+SELECT IdAlum, Matr, Nom ||' '|| ApePate||' '||  ApeMate, Carr, Semes, Prome FROM alumTesoem 
+WHERE Prome>=92 AND Prome<95;
+END;
+
+EXECUTE PSET;
+SELECT * FROM Setenta;
+DELETE FROM Setenta;
+
+------------------------------------------------------------------------------------------------
+
+CREATE TABLE Cincuenta(
+IdAlum NUMBER (30) UNIQUE,
+Matr NUMBER (30),
+Nom VARCHAR2 (30),
+Carr VARCHAR2 (30),
+Semes NUMBER (30),
+CHECK (Semes<=9)
+Prome NUMBER (30)
+);
+
+CREATE OR REPLACE PROCEDURE PCin
+AS
+BEGIN
+INSERT INTO Cien (IdAlum, Matr, Nom, Carr, Semes, Prome);
+SELECT IdAlum, Matr, Nom ||' '|| ApePate||' '||  ApeMate, Carr, Semes, Prome FROM alumTesoem
+where Prome>=90 AND Prome<92;
+end;
+
+EXECUTE PCin;
+SELECT * FROM Cincuenta;
+DELETE FROM Cincuenta;
